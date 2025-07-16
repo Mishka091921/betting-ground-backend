@@ -1,0 +1,36 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "mysql"
+  url      = env("DATABASE_URL")
+}
+
+model Account {
+  id           String   @id @default(uuid()) @db.Char(36)
+  username     String   @unique
+  nickname     String?  @unique
+  password     String
+  points       Int      @default(0)
+  type         AccountType
+  createdAt    DateTime @default(now())
+  lastLogin    DateTime?
+  playerLevel  Int      @default(1)
+  contact      String
+  birthdate    String
+  lastLoginIp  String?
+  status       AccountStatus
+}
+
+enum AccountType {
+  admin
+  player
+  developer
+}
+
+enum AccountStatus {
+  active
+  suspended
+  pending
+}
