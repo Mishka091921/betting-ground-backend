@@ -16,8 +16,7 @@ async function bootstrap() {
   );
 
   app.enableCors(); // required if CORS is blocked
-
-  app.setGlobalPrefix('api');
+   app.setGlobalPrefix('api');
   app.use(cookieParser()); 
   app.useGlobalFilters(new PrismaExceptionFilter()); 
   app.enableVersioning({

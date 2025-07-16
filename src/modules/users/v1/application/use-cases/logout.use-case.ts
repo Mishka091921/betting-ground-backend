@@ -6,6 +6,9 @@ import { Response } from 'express';
 export class LogoutUseCase {
   async execute(res: Response) {
     res.clearCookie('refresh_token');
-    return { message: 'Logged out' };
+    return res.json({
+          message:"Successfully Logged Out"
+    });
+    
   }
 }
