@@ -1,12 +1,12 @@
 // modules/user/users.service.ts
 import { Injectable } from '@nestjs/common';
-import { CreateUserDto } from './application/dto/create-user.dto';
-import { LoginDto } from './application/dto/login.dto';
-import { CreateUserUseCase } from './application/use-cases/create-user.use-case';
-import { LoginUseCase } from './application/use-cases/login.use-case';
-import { GetProfileUseCase } from './application/use-cases/get-profile.use-case';
-import { LogoutUseCase } from './application/use-cases/logout.use-case';
-import { RefreshTokenUseCase } from './application/use-cases/refresh-token.use-case';
+import { CreateUserDto } from '../application/dto/create-user.dto';
+import { LoginDto } from '../application/dto/login.dto';
+import { CreateUserUseCase } from '../application/use-cases/create-user.use-case';
+import { LoginUseCase } from '../application/use-cases/login.use-case';
+import { GetProfileUseCase } from '../application/use-cases/get-profile.use-case';
+import { LogoutUseCase } from '../application/use-cases/logout.use-case';
+import { RefreshTokenUseCase } from '../application/use-cases/refresh-token.use-case';
 import { Request, Response } from 'express';
 @Injectable()
 export class UserService {
