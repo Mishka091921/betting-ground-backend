@@ -10,38 +10,59 @@ import { Roles } from 'src/common/decorators/roles.decorator';
 import { AccountType } from 'src/constants/account-type.enum';
 import { RolesGuard } from 'src/common/guards/roles.guard';
 
-@Controller({path:'user', version: '1'})
+import {
+  ApiTags,
+} from '@nestjs/swagger';
+
+import {
+  SwaggerRegister,
+  SwaggerLogin,
+  SwaggerProfile,
+  SwaggerLogout,
+  SwaggerRefresh,
+  SwaggerTestRole,
+} from '../application/user.swagger';
+
+@ApiTags('User')
+@Controller({ path: 'user', version: '1' })
 export class UserController {
   constructor(private readonly service: UserService) {}
-@Post('register')
+
+  @Post('register')
+  @SwaggerRegister()
   create(@Body() dto: CreateUserDto) {
     return this.service.create(dto);
   }
 
   @Post('login')
+  @SwaggerLogin()
   login(@Body() dto: LoginDto, @Res() res: Response) {
     return this.service.login(dto, res);
   }
 
   @UseGuards(JwtAuthGuard)
   @Get('profile')
+  @SwaggerProfile()
   profile(@User() user) {
     return this.service.profile(user.username);
   }
 
   @Post('logout')
+  @SwaggerLogout()
   logout(@Res() res: Response) {
     return this.service.logout(res);
   }
 
   @Get('refresh')
+  @SwaggerRefresh()
   refresh(@Req() req: Request) {
     return this.service.refresh(req);
   }
 
-  @UseGuards(JwtAuthGuard,RolesGuard)
+  @UseGuards(JwtAuthGuard, RolesGuard)
   @Roles(AccountType.player)
   @Get('test-role')
+  @SwaggerTestRole()
   getSomething(@Req() req: Request) {
     return { message: 'Role check passed!', user: req.user };
   }
