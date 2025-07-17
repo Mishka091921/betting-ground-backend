@@ -4,7 +4,7 @@ export class UserEntity {
     public readonly id: string,
     public readonly username: string,
     public readonly password: string,
-    public readonly type: 'admin' | 'player' | 'developer',
+    public readonly type: 'admin' | 'player' | 'developer'| 'general_admin' | 'super_admin',
     public readonly status: 'active' | 'pending' | 'suspended',
     public readonly points: number,
     public readonly playerLevel: number,
