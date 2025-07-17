@@ -24,7 +24,8 @@ model Account {
 }
 
 enum AccountType {
-  admin
+  general_admin
+  super_admin
   player
   developer
 }

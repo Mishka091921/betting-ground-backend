@@ -30,7 +30,7 @@ export class SocketGateway implements OnGatewayConnection, OnGatewayDisconnect {
       if (typeof userId !== 'string') return socket.disconnect();
 
       socket.data.user = payload;
-      socket.join('global'); // ✅ join global chat
+      socket.join('global');
       this.session.add(userId, socket);
 
       console.log(`[Socket] ${userId} connected and joined 'global'`);
@@ -58,8 +58,8 @@ export class SocketGateway implements OnGatewayConnection, OnGatewayDisconnect {
       sentAt: new Date().toISOString(),
     };
 
-    socket.to('global').emit('chat.globalmessage', payload); // to all except sender
-    socket.emit('chat.globalmessage', payload);              // also echo to sender
+    socket.to('global').emit('chat.globalmessage', payload); 
+    socket.emit('chat.globalmessage', payload);
   }
 
   // ✅ Ping test
