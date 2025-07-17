@@ -6,11 +6,14 @@ import { LoginDto } from '../application/dto/login.dto';
 import { CreateUserDto } from '../application/dto/create-user.dto';
 import { Request, Response } from 'express';
 import { User } from 'src/common/decorators/user.decorator';
+import { Roles } from 'src/common/decorators/roles.decorator';
+import { AccountType } from 'src/constants/account-type.enum';
+import { RolesGuard } from 'src/common/guards/roles.guard';
 
 @Controller({path:'user', version: '1'})
 export class UserController {
   constructor(private readonly service: UserService) {}
- @Post('register')
+@Post('register')
   create(@Body() dto: CreateUserDto) {
     return this.service.create(dto);
   }
@@ -34,5 +37,12 @@ export class UserController {
   @Get('refresh')
   refresh(@Req() req: Request) {
     return this.service.refresh(req);
+  }
+
+  @UseGuards(JwtAuthGuard,RolesGuard)
+  @Roles(AccountType.player)
+  @Get('test-role')
+  getSomething(@Req() req: Request) {
+    return { message: 'Role check passed!', user: req.user };
   }
 }

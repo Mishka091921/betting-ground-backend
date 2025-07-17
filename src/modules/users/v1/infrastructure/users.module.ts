@@ -11,6 +11,7 @@ import { GetProfileUseCase } from '../application/use-cases/get-profile.use-case
 import { UserController } from './users.controller';
 import { RefreshTokenUseCase } from '../application/use-cases/refresh-token.use-case';
 import { LogoutUseCase } from '../application/use-cases/logout.use-case';
+import { RolesGuard } from 'src/common/guards/roles.guard';
 
 @Module({
   imports: [

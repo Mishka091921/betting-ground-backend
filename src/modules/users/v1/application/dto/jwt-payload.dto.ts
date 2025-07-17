@@ -7,7 +7,7 @@ export class JwtPayloadDto {
 
   @IsString()
   username: string;
-
-  @IsIn(['admin', 'player', 'developer'])
-  type: 'admin' | 'player' | 'developer';
+  
+  @IsIn(['admin', 'player', 'developer', 'super_admin', 'general_admin'])
+  type: 'admin' | 'player' | 'developer' | 'super_admin' | 'general_admin';
 }
