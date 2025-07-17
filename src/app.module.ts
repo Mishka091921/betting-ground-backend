@@ -6,7 +6,9 @@ import { UserModule } from './modules/users/v1/infrastructure/users.module';
 import { SocketModule } from './modules/socket/infrastucture/socket.module';
 import { RolesGuard } from './common/guards/roles.guard';
 import { APP_GUARD } from '@nestjs/core';
-import { JwtAuthGuard } from './common/guards/jwt-auth.guard';
+// import { JwtAuthGuard } from './common/guards/jwt-auth.guard';
+
+import {JwtAuthGuard} from '../../lib/guards/jwt.guard'
 
 @Module({
   imports: [

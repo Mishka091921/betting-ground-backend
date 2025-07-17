@@ -18,11 +18,12 @@
     "strictBindCallApply": false,
     "noFallthroughCasesInSwitch": false,
     "paths": {
-    "@common/*": ["common/*"],
-    "@shared/*": ["shared/*"],
-    "@core/*": ["core/*"],
-    "@config/*": ["config/*"],
-    "@modules/*": ["modules/*"]
+      "@common/*": ["common/*"],
+      "@shared/*": ["shared/*"],
+      "@core/*": ["core/*"],
+      "@config/*": ["config/*"],
+      "@modules/*": ["modules/*"],
+      "lib": ["../lib"]
   }
 
   }
