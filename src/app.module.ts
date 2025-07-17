@@ -22,6 +22,7 @@ import { JwtAuthGuard } from './common/guards/jwt-auth.guard';
     {
       provide: APP_GUARD,
       useClass: RolesGuard,     // register RolesGuard globally
-    },],
+    },
+  ],
 })
 export class AppModule {}

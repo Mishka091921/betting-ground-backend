@@ -22,18 +22,21 @@ import {
   SwaggerRefresh,
   SwaggerTestRole,
 } from '../application/user.swagger';
+import { Public } from 'src/common/decorators/public.decorator';
 
 @ApiTags('User')
 @Controller({ path: 'user', version: '1' })
 export class UserController {
   constructor(private readonly service: UserService) {}
 
+  @Public()
   @Post('register')
   @SwaggerRegister()
   create(@Body() dto: CreateUserDto) {
     return this.service.create(dto);
   }
 
+  @Public()
   @Post('login')
   @SwaggerLogin()
   login(@Body() dto: LoginDto, @Res() res: Response) {
@@ -59,6 +62,7 @@ export class UserController {
     return this.service.refresh(req);
   }
 
+  
   @UseGuards(JwtAuthGuard, RolesGuard)
   @Roles(AccountType.player)
   @Get('test-role')

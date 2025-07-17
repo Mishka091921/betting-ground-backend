@@ -48,7 +48,6 @@ export class SocketGateway implements OnGatewayConnection, OnGatewayDisconnect {
     }
   }
 
-  // ✅ Global chat event
   @SubscribeMessage('chat.globalmessage')
   handleGlobalMessage(@MessageBody() msg: { content: string }, @ConnectedSocket() socket: Socket) {
     const user = socket.data.user;
@@ -62,13 +61,11 @@ export class SocketGateway implements OnGatewayConnection, OnGatewayDisconnect {
     socket.emit('chat.globalmessage', payload);
   }
 
-  // ✅ Ping test
   @SubscribeMessage('ping')
   handlePing(@ConnectedSocket() socket: Socket) {
     return { pong: true };
   }
 
-  // ✅ Emit to specific user
   emitToUser(userId: string, event: string, data: any) {
     const socket = this.session.getSocket(userId);
     if (socket) {
@@ -76,12 +73,10 @@ export class SocketGateway implements OnGatewayConnection, OnGatewayDisconnect {
     }
   }
 
-  // ✅ Get list of online users
   getOnlineUsers(): string[] {
     return this.session.getOnlineUsers();
   }
 
-  // ✅ Force logout
   forceLogout(userId: string) {
     this.session.disconnectUser(userId);
   }
