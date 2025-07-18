@@ -23,7 +23,6 @@
       "@core/*": ["core/*"],
       "@config/*": ["config/*"],
       "@modules/*": ["modules/*"],
-      "lib": ["../lib"]
   }
 
   }
