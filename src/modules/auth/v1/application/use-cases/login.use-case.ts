@@ -16,8 +16,6 @@ export class LoginUseCase {
 
   async execute(loginDto: LoginDto,res: Response) {
 
-    console.log("Login")
-    
     const user = await this.userRepo.findByUsername(loginDto.username);
     if (!user || !(await bcrypt.compare(loginDto.password, user.password))) {
       throw new UnauthorizedException();
@@ -41,6 +39,7 @@ export class LoginUseCase {
       maxAge: loginDto.rememberMe ? 7 * 86400000 : 86400000,
     });
 
+    
   return res.json({
     access_token: accessToken,
     user: {

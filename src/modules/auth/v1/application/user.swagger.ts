@@ -10,8 +10,8 @@ import {
   ApiBearerAuth,
 } from '@nestjs/swagger';
 
-import { CreateUserDto } from '../application/dto/create-user.dto';
-import { LoginDto } from '../application/dto/login.dto';
+import { CreateUserDto } from './dto/create-user.dto';
+import { LoginDto } from './dto/login.dto';
 
 export const SwaggerRegister = () =>
   applyDecorators(

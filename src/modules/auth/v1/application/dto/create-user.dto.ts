@@ -13,16 +13,14 @@ export class CreateUserDto {
 
   @IsString()
   @IsNotEmpty()
-  password: string;
-
-  @IsOptional()
-  @IsString()
   nickname?: string;
 
   @IsString()
   @IsNotEmpty()
-  contact: string;
+  password: string;
 
-  @IsDateString()
-  birthdate: string;
+  @IsOptional()
+  @IsString()
+  signupPath?: string;
+
 }

@@ -22,6 +22,7 @@ export class UserRepositoryImpl extends UserRepository {
     return new UserEntity(
       account.id,
       account.username,
+      account.nickname ?? '',
       account.password,
       account.type,
       account.status,
@@ -30,11 +31,12 @@ export class UserRepositoryImpl extends UserRepository {
     );
   }
 
-async create(user: Partial<UserEntity> & { username: string; contact: string; birthdate: Date; lastLoginIp: string }): Promise<UserEntity> {
+async create(user: Partial<UserEntity> & { username: string;nickname:string, contact: string; birthdate: Date; lastLoginIp: string }): Promise<UserEntity> {
   const account = await this.prismaWriteService.account.create({
     data: {
       id: user.id,
       username: user.username,
+      nickname: user.nickname,
       password: user.password ?? '',
       type: user.type ?? 'player',
       status: user.status ?? 'active',
@@ -49,6 +51,7 @@ async create(user: Partial<UserEntity> & { username: string; contact: string; bi
   return new UserEntity(
     account.id,
     account.username,
+    account.nickname ?? '',
     account.password,
     account.type,
     account.status,

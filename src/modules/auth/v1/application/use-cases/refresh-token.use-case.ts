@@ -15,7 +15,7 @@ export class RefreshTokenUseCase {
       const payload = await this.jwtService.verifyAsync(refreshToken);
       const newAccessToken = this.jwtService.sign(
         { sub: payload.sub },
-        { expiresIn: '15m' },
+        { expiresIn: '1d' },
       );
       return { access_token: newAccessToken };
     } catch (err) {

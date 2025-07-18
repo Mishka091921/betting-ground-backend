@@ -3,7 +3,7 @@ import { IsString, IsIn } from 'class-validator';
 
 export class JwtPayloadDto {
   @IsString()
-  sub: string; // account ID
+  sub: string;
 
   @IsString()
   username: string;

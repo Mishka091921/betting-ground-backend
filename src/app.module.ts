@@ -2,19 +2,20 @@ import { Module } from '@nestjs/common';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { PrismaModule } from './core/prisma/prisma.module';
-import { UserModule } from './modules/users/v1/infrastructure/users.module';
+import { UserModule } from './modules/auth/v1/infrastructure/users.module';
 import { SocketModule } from './modules/socket/infrastucture/socket.module';
 import { RolesGuard } from './common/guards/roles.guard';
 import { APP_GUARD } from '@nestjs/core';
 import { JwtAuthGuard } from './common/guards/jwt-auth.guard';
+import { StrapiGatewayModule } from './strapi-gateway/strapi.gateway.module';
 
-// import {JwtAuthGuard} from '../../lib/guards/jwt.guard'
 
 @Module({
   imports: [
     PrismaModule, 
     UserModule,
-    SocketModule
+    SocketModule,
+    StrapiGatewayModule
   ],
   controllers: [AppController],
   providers: [AppService,  {

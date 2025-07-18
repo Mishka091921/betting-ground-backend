@@ -25,7 +25,7 @@ import {
 import { Public } from 'src/common/decorators/public.decorator';
 
 @ApiTags('User')
-@Controller({ path: 'user', version: '1' })
+@Controller({ path: 'auth', version: '1' })
 export class UserController {
   constructor(private readonly service: UserService) {}
 
